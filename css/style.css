@@ -46,14 +46,19 @@
 }
 
 
+.wrp {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   line-height: 26px;
   color: #0D0D0D;
   background-color: #FFFFFF;
-  width: 1440px;
-  margin: 0 auto;
 }
 
 
@@ -61,7 +66,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 20px 0;
 }
 
 .logo {
@@ -95,9 +100,20 @@ body {
 .biography {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  padding: 40px 20px;
+  gap: 60px;
+  padding: 60px 0;
+}
+
+.biography-photo {
+  width: 571px;
+  height: 840px;
+  object-fit: cover;
+  display: block;
+}
+
+.biography-content {
+  display: flex;
+  flex-direction: column;
 }
 
 .biography-title {
@@ -106,6 +122,7 @@ body {
   font-size: 86px;
   line-height: 115px;
   color: #000000;
+  margin-bottom: 8px;
 }
 
 .biography-role {
@@ -114,18 +131,39 @@ body {
   font-size: 18px;
   line-height: 21px;
   color: #0D0D0D;
-  margin-top: 8px;
+  margin-bottom: 28px;
+}
+
+.biography-skills {
+  list-style: none;
+  margin-bottom: 36px;
+}
+
+.biography-skills li {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 26px;
+  color: #0D0D0D;
 }
 
 .quote {
+  position: relative;
   font-family: 'Bitter', serif;
   font-weight: 400;
   font-size: 26px;
   line-height: 31px;
   color: #0D0D0D;
-  margin-top: 20px;
-  padding-left: 20px;
-  border-left: 20px solid #0D0D0D;
+  padding-left: 30px;
+}
+
+.quote::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 100%;
+  background-color: #0D0D0D;
 }
 
 .quote-author {
@@ -135,12 +173,12 @@ body {
   font-size: 16px;
   line-height: 19px;
   color: #0D0D0D;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 
 .designers {
-  padding: 40px 20px;
+  padding: 60px 0;
 }
 
 .section-title {
@@ -149,18 +187,26 @@ body {
   font-size: 24px;
   line-height: 28px;
   color: #000000;
+  margin-bottom: 40px;
 }
 
 .designer-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
-  margin-top: 40px;
 }
 
 .designer-card {
   display: flex;
   flex-direction: column;
+}
+
+.designer-photo {
+  width: 100%;
+  height: 475px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 12px;
 }
 
 .designer-name {
@@ -170,6 +216,7 @@ body {
   line-height: 19px;
   text-transform: uppercase;
   color: #000000;
+  margin-bottom: 8px;
 }
 
 .designer-text {
@@ -178,25 +225,26 @@ body {
   font-size: 16px;
   line-height: 19px;
   color: #000000;
+  margin-bottom: 4px;
 }
 
-.designer-photo {
-  width: 100%;
-  height: 475px;
-  object-fit: cover;
-  display: block;
-  margin-bottom: 10px;
+.designer-skills {
+  margin-top: 4px;
+  padding-left: 20px;
 }
-
 
 .footer {
+  background-color: #0D0D0D;
+  color: #FFFFFF;
+  margin-top: 60px;
+  padding: 70px 0;   /* вертикальные отступы внутри */
+}
+
+.footer-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 70px 20px;
-  background-color: #0D0D0D;
-  color: #FFFFFF;
 }
 
 .footer-contact {
@@ -212,9 +260,11 @@ body {
   color: #FFFFFF;
 }
 
-.biography-photo {
-  width: 571px;
-  height: 840px;
-  object-fit: cover;
-  display: block;
+.copyright {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  text-transform: uppercase;
+  color: #FFFFFF;
 }
