@@ -4,97 +4,107 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Mod — креативное агентство</title>
-  <link rel="stylesheet" href="css/style.css">   <!-- Image 5: линк стилей -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header>
-  <h1>Mod</h1>
+<header class="header">
+  <h1 class="logo">Mod</h1>
   <nav>
-    <ul>
-      <li><a href="#">Designers</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contacts</a></li>
+    <ul class="nav-list">
+      <li><a class="nav-link nav-link--active" href="#">Designers</a></li>
+      <li><a class="nav-link" href="#">About</a></li>
+      <li><a class="nav-link" href="#">Contacts</a></li>
     </ul>
   </nav>
 </header>
 
 <main>
-  <section>
-    <h2>Katya Mills</h2>
-    <h3>Art Director</h3>
+  <section class="biography">
+    <img class="biography-photo" src="img/katya-mils.jpg" alt="Katya Mills">
 
-    <ul>
-      <li>Scenography</li>
-      <li>Styling</li>
-      <li>Creative Photography</li>
-      <li>Design</li>
-    </ul>
+    <div>
+      <h2 class="biography-title">Katya Mills</h2>
+      <p class="biography-role">Art Director</p>
 
-    <blockquote>
-      «The more I deal with the work as something that is my own,
-      as something that is personal, the more successful it is.»
-      <cite>Katya Mills</cite>
-    </blockquote>
+      <ul>
+        <li>Scenography</li>
+        <li>Styling</li>
+        <li>Creative Photography</li>
+        <li>Design</li>
+      </ul>
+
+      <blockquote class="quote">
+        «The more I deal with the work as something that is my own,
+        as something that is personal, the more successful it is.»
+        <cite class="quote-author">Katya Mills</cite>
+      </blockquote>
+    </div>
   </section>
 
-  <section>
-    <h2>Designers</h2>
+  <section class="designers">
+    <h2 class="section-title">Designers</h2>
 
-    <article>
-      <h3>Jess Wonder</h3>
-      <p>From / Be more flower</p>
-      <p>Skills:</p>
-      <ul>
-        <li>Design Strategy</li>
-        <li>Marketing</li>
-      </ul>
-    </article>
+    <div class="designer-grid">
+      <article class="designer-card">
+        <img class="designer-photo" src="img/jess.jpg" alt="Jess Wonder">
+        <h3 class="designer-name">Jess Wonder</h3>
+        <p class="designer-text">From / Be more flower</p>
+        <p class="designer-text">Skills:</p>
+        <ul>
+          <li class="designer-text">Design Strategy</li>
+          <li class="designer-text">Marketing</li>
+        </ul>
+      </article>
 
-    <article>
-      <h3>Kameron Clein</h3>
-      <p>From / Be more flower</p>
-      <p>Skills:</p>
-      <ul>
-        <li>Design Strategy</li>
-        <li>Marketing</li>
-      </ul>
-    </article>
+      <article class="designer-card">
+        <img class="designer-photo" src="img/kameron.jpg" alt="Kameron Clein">
+        <h3 class="designer-name">Kameron Clein</h3>
+        <p class="designer-text">From / Be more flower</p>
+        <p class="designer-text">Skills:</p>
+        <ul>
+          <li class="designer-text">Design Strategy</li>
+          <li class="designer-text">Marketing</li>
+        </ul>
+      </article>
 
-    <article>
-      <h3>Loussie Red</h3>
-      <p>From / Be more flower</p>
-      <p>Skills:</p>
-      <ul>
-        <li>Design Strategy</li>
-        <li>Marketing</li>
-      </ul>
-    </article>
+      <article class="designer-card">
+        <img class="designer-photo" src="img/louisse.png" alt="Loussie Red">
+        <h3 class="designer-name">Loussie Red</h3>
+        <p class="designer-text">From / Be more flower</p>
+        <p class="designer-text">Skills:</p>
+        <ul>
+          <li class="designer-text">Design Strategy</li>
+          <li class="designer-text">Marketing</li>
+        </ul>
+      </article>
 
-    <article>
-      <h3>Jess Wonder</h3>
-      <p>From / Be more flower</p>
-      <p>Skills:</p>
-      <ul>
-        <li>Design Strategy</li>
-        <li>Marketing</li>
-      </ul>
-    </article>
+      <article class="designer-card">
+        <img class="designer-photo" src="img/jess-1.jpg" alt="Jess Wonder">
+        <h3 class="designer-name">Jess Wonder</h3>
+        <p class="designer-text">From / Be more flower</p>
+        <p class="designer-text">Skills:</p>
+        <ul>
+          <li class="designer-text">Design Strategy</li>
+          <li class="designer-text">Marketing</li>
+        </ul>
+      </article>
+    </div>
   </section>
 </main>
 
-<footer>
+<footer class="footer">
   <div class="contacts">
-    <p>Телефон: <a href="tel:+79211234567">+7 921 123 45 67</a></p>
-    <p>Email: <a href="mailto:INFO@MODSTUDIO.COM">INFO@MODSTUDIO.COM</a></p>
+    <p class="footer-contact">Телефон: <a class="footer-link" href="tel:+79211234567">+7 921 123 45 67</a></p>
+    <p class="footer-contact">Email: <a class="footer-link" href="mailto:INFO@MODSTUDIO.COM">INFO@MODSTUDIO.COM</a></p>
   </div>
 
   <ul class="socials">
-    <li><a href="#">Vk</a></li>
-    <li><a href="#">Pinterest</a></li>
-    <li><a href="#">Behance</a></li>
+    <li><a class="footer-link" href="#">Vk</a></li>
+    <li><a class="footer-link" href="#">Pinterest</a></li>
+    <li><a class="footer-link" href="#">Behance</a></li>
   </ul>
 
-  <p>© 2023 Mod Media. All rights reserved.</p>
+  <p class="footer-contact">© 2023 Mod Media. All rights reserved.</p>
 </footer>
 </body>
 </html>

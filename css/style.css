@@ -1,28 +1,44 @@
+/* ============================================================
+   Mod Studio — базовые стили
+   ============================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 @font-face {
   font-family: 'Playfair Display';
   src: url('../fonts/PlayfairDisplay-SemiBold.ttf') format('truetype');
   font-weight: 600;
 }
+
 @font-face {
   font-family: 'Playfair Display';
   src: url('../fonts/PlayfairDisplay-Medium.ttf') format('truetype');
   font-weight: 500;
 }
+
 @font-face {
   font-family: 'Roboto';
   src: url('../fonts/Roboto-Regular.ttf') format('truetype');
   font-weight: 400;
 }
+
 @font-face {
   font-family: 'Roboto';
   src: url('../fonts/Roboto-Medium.ttf') format('truetype');
   font-weight: 500;
 }
+
 @font-face {
   font-family: 'Roboto';
   src: url('../fonts/Roboto-Bold.ttf') format('truetype');
   font-weight: 700;
 }
+
 @font-face {
   font-family: 'Bitter';
   src: url('../fonts/Bitter-Regular.ttf') format('truetype');
@@ -41,14 +57,14 @@ body {
 }
 
 
-header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
 }
 
-h1 {
+.logo {
   font-family: 'Playfair Display', serif;
   font-weight: 600;
   font-size: 86px;
@@ -56,13 +72,13 @@ h1 {
   color: #000000;
 }
 
-nav ul {
+.nav-list {
   display: flex;
   gap: 55px;
   list-style: none;
 }
 
-nav a {
+.nav-link {
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 24px;
@@ -71,7 +87,7 @@ nav a {
   text-decoration: none;
 }
 
-nav li:first-child a {
+.nav-link--active {
   text-decoration: underline;
 }
 
@@ -84,7 +100,7 @@ nav li:first-child a {
   padding: 40px 20px;
 }
 
-.biography h2 {
+.biography-title {
   font-family: 'Playfair Display', serif;
   font-weight: 500;
   font-size: 86px;
@@ -92,7 +108,7 @@ nav li:first-child a {
   color: #000000;
 }
 
-.biography .role {
+.biography-role {
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 18px;
@@ -101,7 +117,7 @@ nav li:first-child a {
   margin-top: 8px;
 }
 
-blockquote {
+.quote {
   font-family: 'Bitter', serif;
   font-weight: 400;
   font-size: 26px;
@@ -112,7 +128,7 @@ blockquote {
   border-left: 20px solid #0D0D0D;
 }
 
-blockquote cite {
+.quote-author {
   display: block;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
@@ -127,7 +143,7 @@ blockquote cite {
   padding: 40px 20px;
 }
 
-.designers h2 {
+.section-title {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   font-size: 24px;
@@ -142,12 +158,12 @@ blockquote cite {
   margin-top: 40px;
 }
 
-article {
+.designer-card {
   display: flex;
   flex-direction: column;
 }
 
-article h3 {
+.designer-name {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   font-size: 16px;
@@ -156,7 +172,7 @@ article h3 {
   color: #000000;
 }
 
-article p {
+.designer-text {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -164,7 +180,7 @@ article p {
   color: #000000;
 }
 
-article img {
+.designer-photo {
   width: 100%;
   height: 475px;
   object-fit: cover;
@@ -173,7 +189,7 @@ article img {
 }
 
 
-footer {
+.footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -183,7 +199,7 @@ footer {
   color: #FFFFFF;
 }
 
-footer p {
+.footer-contact {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -192,6 +208,13 @@ footer p {
   text-decoration: underline;
 }
 
-footer a {
+.footer-link {
   color: #FFFFFF;
+}
+
+.biography-photo {
+  width: 571px;
+  height: 840px;
+  object-fit: cover;
+  display: block;
 }
