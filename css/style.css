@@ -105,14 +105,14 @@ body {
 }
 
 .biography-photo {
-  width: 571px;
-  height: 840px;
+  width: 50%;
+  height: auto;
   object-fit: cover;
   display: block;
 }
 
 .biography-content {
-
+  width: 50%;
 }
 
 .biography-title {
