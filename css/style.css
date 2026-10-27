@@ -69,7 +69,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  padding: 16px 0;
 }
 
 .logo {
@@ -111,6 +111,33 @@ body {
   text-underline-offset: 4px;
 }
 
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-message {
+  display: flex;
+  line-height: 0;
+  transition: opacity 0.2s ease;
+}
+
+.nav-message:hover {
+  opacity: 0.55;
+}
+
+.nav-message:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.nav-message-icon {
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+
 
 /* ---------- Biography ---------- */
 .biography {
@@ -121,13 +148,13 @@ body {
   align-items: start;
   max-width: 1165px;
   margin: 0 auto;
-  padding: 60px 0;
+  padding: 59px 0;
 }
 
 .biography-label {
   position: absolute;
-  left: 600px;
-  top: 200px;
+  left: 628px;
+  top: 137px;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   font-size: 24px;
@@ -149,8 +176,11 @@ body {
 .biography-content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: flex-start;
-  padding-top: 18px;
+  gap: 36px;
+  min-height: 100%;
+  padding: 18px 0;
 }
 
 .biography-title {
@@ -167,14 +197,20 @@ body {
   font-size: 18px;
   line-height: 21px;
   color: #0D0D0D;
-  margin-top: 8px;
+}
+
+.biography-quote-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
 }
 
 .biography-divider {
   width: 20px;
   height: 6px;
   background-color: #0D0D0D;
-  margin: 36px 0 18px;
+  margin: 0;
 }
 
 .quote {
@@ -189,7 +225,7 @@ body {
 
 /* ---------- Designers ---------- */
 .designers {
-  padding: 60px 0;
+  padding: 0;
 }
 
 .section-title {
@@ -199,7 +235,8 @@ body {
   line-height: 28px;
   color: #000000;
   max-width: 1165px;
-  margin: 0 auto 74px;
+  margin: 0 auto 46px;
+  padding-left: 119px;
 }
 
 .designer-grid {
@@ -220,6 +257,7 @@ body {
 .designer-card {
   display: flex;
   flex-direction: column;
+  padding-bottom: 13px;
 }
 
 .designer-card--wide {
@@ -227,7 +265,7 @@ body {
 }
 
 .designer-card--narrow {
-  width: 31.5%;
+  width: 31.8%;
 }
 
 .designer-photo {
@@ -245,7 +283,6 @@ body {
   line-height: 19px;
   text-transform: uppercase;
   color: #000000;
-  margin-bottom: 4px;
 }
 
 .designer-text {
@@ -261,21 +298,22 @@ body {
 .footer {
   background-color: #0D0D0D;
   color: #FFFFFF;
-  margin-top: 60px;
+  margin-top: 78px;
 }
 
 .footer-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 20px;
-  padding: 70px 20px;
+  padding: 70px 20px 68px;
 }
 
 .contacts {
   display: flex;
   flex-direction: column;
   font-style: normal;
+  margin-right: 436px;
 }
 
 .contacts .footer-link {
@@ -301,8 +339,14 @@ body {
 .socials {
   display: flex;
   flex-wrap: wrap;
-  gap: 55px;
+  gap: 25px;
   list-style: none;
+}
+
+.social-icon {
+  display: block;
+  width: 30px;
+  height: 30px;
 }
 
 .copyright {
@@ -311,6 +355,7 @@ body {
   color: #FFFFFF;
   text-align: right;
   max-width: 340px;
+  margin-left: auto;
 }
 
 
@@ -450,6 +495,7 @@ body {
 
   .copyright {
     text-align: left;
+    margin-left: 0;
   }
 }
 
