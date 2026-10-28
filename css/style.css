@@ -199,6 +199,16 @@ body {
   color: #0D0D0D;
 }
 
+/* Роль — последовательность блоков; слеши между ними собираем через ::before
+   (десктоп не зависит от переносов в разметке) */
+.biography-role .role-line + .role-line::before {
+  content: " / ";
+}
+
+.biography-role .role-line--lead::before {
+  content: "";
+}
+
 .biography-quote-block {
   display: flex;
   flex-direction: column;
@@ -220,6 +230,12 @@ body {
   line-height: 31px;
   color: #0D0D0D;
   max-width: 455px;
+}
+
+/* Переносы цитаты: в HTML лежат и десктопные (br-1440), и планшетные (br-768)
+   переносы; на десктопе показываем только свои, пряча планшетные. */
+.quote .br-768 {
+  display: none;
 }
 
 
@@ -298,7 +314,8 @@ body {
 .footer {
   background-color: #0D0D0D;
   color: #FFFFFF;
-  margin-top: 78px;
+  max-width: 1440px;
+  margin: 78px auto 0;
 }
 
 .footer-inner {
@@ -306,6 +323,9 @@ body {
   align-items: center;
   justify-content: flex-start;
   gap: 20px;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 70px 20px 68px;
 }
 
@@ -389,6 +409,12 @@ body {
 
 /* ---------- Планшет (макет 768: своя компоновка) ---------- */
 @media (max-width: 960px) {
+  /* У планшетного макета свои отступы от края (14/16), сбрасываем общий 20px */
+  .wrp {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   /* Header по планшетному макету: без логотипа, меню слева, иконка справа */
   .header {
     height: 82px;
@@ -400,28 +426,43 @@ body {
   }
 
   .nav {
+    position: relative;
     width: 100%;
-    justify-content: space-between;
-    gap: 16px;
   }
 
+  /* Буквы-заглушки D A C на позициях макета (блоки 92px на x=16/232/448).
+     `position: absolute` лежит внутри .nav, уже сдвинутого на 16px паддингом хедера. */
   .nav-list {
-    gap: 16px;
+    position: absolute;
+    left: 0;
+    width: 524px;
+    justify-content: space-between;
   }
 
-  /* В планшетном макете вместо слов меню — буквы D A C (заглушки) */
+  .nav-message {
+    position: absolute;
+    top: -25px;
+    left: 666.5px;
+  }
+
+  .nav-list li {
+    width: 92px;
+    text-align: center;
+  }
+
   .nav-link {
     font-size: 0;
-    line-height: 0;
+    line-height: 1;
   }
 
   .nav-link::before {
+    content: "D";
+    display: inline-block;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     font-size: 40px;
     line-height: 48px;
     color: #000000;
-    content: "D";
   }
 
   .nav-list li:nth-child(2) .nav-link::before {
@@ -440,10 +481,10 @@ body {
     margin-top: 80px;
   }
 
-  /* В планшетном макете label «Biography» — горизонтальный, справа сверху */
+  /* В планшетном макете label «Biography» — горизонтальный, справа сверху (правый край 752) */
   .biography-label {
     left: auto;
-    right: 0;
+    right: 16px;
     top: 0;
     font-size: 18px;
     line-height: 21px;
@@ -464,7 +505,7 @@ body {
     order: 1;
     justify-content: flex-start;
     gap: 0;
-    padding: 0;
+    padding: 0 14px;
   }
 
   .biography-role {
@@ -472,14 +513,28 @@ body {
     max-width: 526px;
   }
 
-  /* Роль в макете планшета — без принудительных переносов (течёт на 526) */
+  /* В макете планшета роль идёт одной строкой на каждый пункт (слеши не нужны) */
   .biography-role br {
     display: none;
   }
 
+  .biography-role .role-line {
+    display: block;
+  }
+
+  /* В макете планшета строки роли идут с тире-маркерами: «- Scenography» и т.д.
+     Scenography (role-line--lead) отделён от Art Director тегом <br>, поэтому
+     дефис ему задаём отдельным правилом. */
+  .biography-role .role-line + .role-line::before,
+  .biography-role .role-line--lead::before {
+    content: "- ";
+  }
+
   .biography-quote-block {
     order: 2;
-    margin-top: 122px;
+    width: 688px;
+    max-width: 100%;
+    margin-top: 59px;
     gap: 0;
   }
 
@@ -492,7 +547,12 @@ body {
     order: 3;
     font-size: 64px;
     line-height: 1.33;
-    margin-top: 159px;
+    margin-top: 120px;
+  }
+
+  /* В планшетном макете имя идёт с маркером-дефисом: «-Katya Mills» */
+  .biography-title::before {
+    content: "-";
   }
 
   /* На планшете имя в одну строку (десктопному <br> тут не место) */
@@ -501,15 +561,25 @@ body {
   }
 
   .quote {
+    font-family: 'Bitter', serif;
+    font-weight: 300;
     font-size: 30px;
-    line-height: 36px;
+    line-height: 36.75px;
+    width: 100%;
     max-width: 688px;
   }
 
-  /* В макете цитата цельным абзацем (без десктопных <br>) */
-  .quote br {
+  /* На планшете — свои переносы цитаты: прячем десктопные, показываем планшетные */
+  .quote .br-1440 {
     display: none;
   }
+
+  .quote .br-768 {
+    display: initial;
+  }
+
+  /* В макете цитата разбита на 4 строки (Bitter 300/30/36) —
+     переносы заданы жёстко, поэтому на планшете их сохраняем */
 
   /* Designers: вертикальные карточки 736×313 (фото 258 слева/справа) */
   .designers {
@@ -518,11 +588,13 @@ body {
 
   .section-title {
     margin-bottom: 31px;
-    padding-left: 99px;
+    padding-left: 119px;
   }
 
   .designer-grid {
+    width: 736px;
     max-width: 100%;
+    margin-left: 0;
   }
 
   .designer-row {
@@ -542,8 +614,17 @@ body {
     padding-bottom: 0;
   }
 
+  /* Чётные карточки: текст слева (как в макете), фото справа */
   .designer-row .designer-card:nth-child(even) {
-    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+  .designer-row .designer-card:nth-child(even) .designer-photo {
+    order: 2;
+  }
+
+  .designer-row .designer-card:nth-child(even) .designer-info {
+    order: 1;
   }
 
   .designer-photo {
@@ -557,12 +638,27 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 6px;
+    gap: 0;
     padding: 40px 30px;
   }
 
+  /* В планшетном макете подпись карточки: имя крупно 700/24/28 uppercase,
+     строки From/… и Skills/… — мельче (400/16/18.75). Бокс 360×65. */
   .designer-name {
     margin: 0;
+    max-width: 360px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .designer-info .designer-text {
+    margin: 0;
+    max-width: 360px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18.75px;
   }
 
   /* Footer: фиксированная раскладка по планшетному макету (coздav по координатам) */
@@ -618,6 +714,7 @@ body {
   }
 
   .nav-list {
+    position: static;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px 28px;
@@ -640,6 +737,11 @@ body {
 
   .biography-title {
     font-size: 52px;
+  }
+
+  /* На мобильном макета с дефисом нет — сбрасываем маркер */
+  .biography-title::before {
+    content: "";
   }
 
   .designers {
