@@ -10,12 +10,15 @@
 <div class="wrp">
   <header class="header">
     <h1 class="logo">Mod</h1>
-    <nav>
+    <nav class="nav">
       <ul class="nav-list">
         <li><a class="nav-link nav-link--active" href="#">Designers</a></li>
         <li><a class="nav-link" href="#">About</a></li>
         <li><a class="nav-link" href="#">Contacts</a></li>
       </ul>
+      <a class="nav-message" href="#" aria-label="Написать нам">
+        <img class="nav-message-icon" src="img/icon-message.svg" alt="" width="50" height="50">
+      </a>
     </nav>
   </header>
 
@@ -26,16 +29,18 @@
       <img class="biography-photo" src="img/katya-mils.jpg" alt="Katya Mills">
 
       <div class="biography-content">
-        <h2 class="biography-title">Katya Mills</h2>
-        <p class="biography-role">Art Director</p>
-        <p class="biography-role">Scenography / Styling / Creative Photography / Design</p>
+        <h2 class="biography-title">Katya <br>Mills</h2>
+        <p class="biography-role">
+          <span class="role-line">Art Director</span><br><span class="role-line role-line--lead">Scenography</span> <span class="role-line">Styling</span> <span class="role-line">Creative Photography</span> <span class="role-line">Design</span>
+        </p>
 
-        <p class="biography-divider" aria-hidden="true"></p>
+        <div class="biography-quote-block">
+          <p class="biography-divider" aria-hidden="true"></p>
 
-        <blockquote class="quote" lang="en">
-          “The more I deal with the work as something that is my own,
-          as something that is personal, the more successful it is.”
-        </blockquote>
+          <blockquote class="quote" lang="en">
+            “The more I deal with<br class="br-768"> the work<br class="br-1440"> as something that is my own,<br> as something that<br class="br-768"> is personal,<br class="br-1440"> the more successful it is.”
+          </blockquote>
+        </div>
       </div>
     </section>
 
@@ -46,32 +51,40 @@
         <div class="designer-row">
           <article class="designer-card designer-card--wide">
             <img class="designer-photo" src="img/jess.jpg" alt="Jess Wonder">
-            <h3 class="designer-name">Jess Wonder</h3>
-            <p class="designer-text">From / Be more flower</p>
-            <p class="designer-text">Skills / Design Strategy / Marketing</p>
+            <div class="designer-info">
+              <h3 class="designer-name">Jess Wonder</h3>
+              <p class="designer-text">From/ Be more flower</p>
+              <p class="designer-text">Skills/ Design Strategy / Marketing</p>
+            </div>
           </article>
 
           <article class="designer-card designer-card--narrow">
             <img class="designer-photo" src="img/kameron.jpg" alt="Kameron Clein">
-            <h3 class="designer-name">Kameron Clein</h3>
-            <p class="designer-text">From / Be more flower</p>
-            <p class="designer-text">Skills / Design Strategy / Marketing</p>
+            <div class="designer-info">
+              <h3 class="designer-name">Kameron Clein</h3>
+              <p class="designer-text">From/ Be more flower</p>
+              <p class="designer-text">Skills/ Design Strategy / Marketing</p>
+            </div>
           </article>
         </div>
 
         <div class="designer-row">
           <article class="designer-card designer-card--narrow">
             <img class="designer-photo" src="img/louisse.png" alt="Loussie Red">
-            <h3 class="designer-name">Loussie Red</h3>
-            <p class="designer-text">From / Be more flower</p>
-            <p class="designer-text">Skills / Design Strategy / Marketing</p>
+            <div class="designer-info">
+              <h3 class="designer-name">Loussie Red</h3>
+              <p class="designer-text">From/ Be more flower</p>
+              <p class="designer-text">Skills/ Design Strategy / Marketing</p>
+            </div>
           </article>
 
           <article class="designer-card designer-card--wide">
             <img class="designer-photo" src="img/jess-1.jpg" alt="Jess Wonder">
-            <h3 class="designer-name">Jess Wonder</h3>
-            <p class="designer-text">From / Be more flower</p>
-            <p class="designer-text">Skills / Design Strategy / Marketing</p>
+            <div class="designer-info">
+              <h3 class="designer-name">Jess Wonder</h3>
+              <p class="designer-text">From/ Be more flower</p>
+              <p class="designer-text">Skills/ Design Strategy / Marketing</p>
+            </div>
           </article>
         </div>
       </div>
@@ -87,9 +100,9 @@
     </address>
 
     <ul class="socials">
-      <li><a class="footer-link" href="#">Vk</a></li>
-      <li><a class="footer-link" href="#">Pinterest</a></li>
-      <li><a class="footer-link" href="#">Behance</a></li>
+      <li><a class="footer-link" href="#"><img class="social-icon" src="img/vk.svg" alt="Vk" width="30" height="30"></a></li>
+      <li><a class="footer-link" href="#"><img class="social-icon" src="img/pinterest.svg" alt="Pinterest" width="30" height="30"></a></li>
+      <li><a class="footer-link" href="#"><img class="social-icon" src="img/behance.svg" alt="Behance" width="30" height="30"></a></li>
     </ul>
 
     <p class="copyright">© 2023 Mod Media. All rights reserved.</p>
