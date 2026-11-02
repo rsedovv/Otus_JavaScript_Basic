@@ -439,10 +439,13 @@ body {
     justify-content: space-between;
   }
 
+  /* Привязка к правому краю вместо left: 666.5px — на 768 позиция та же,
+     но на 701–732 иконка больше не вылезает за экран */
   .nav-message {
     position: absolute;
     top: -25px;
-    left: 666.5px;
+    right: 19.5px;
+    left: auto;
   }
 
   .nav-list li {
@@ -532,8 +535,8 @@ body {
 
   .biography-quote-block {
     order: 2;
-    width: 688px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 688px;
     margin-top: 59px;
     gap: 0;
   }
@@ -702,10 +705,18 @@ body {
   }
 
   .header {
+    height: auto;
     flex-direction: column;
     align-items: center;
     row-gap: 10px;
     padding: 24px 0 16px;
+  }
+
+  /* Снимаем планшетное абсолютное позиционирование: иконка снова в потоке */
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 12px;
   }
 
   .logo {
@@ -713,26 +724,38 @@ body {
     line-height: 1.1;
   }
 
+  /* Меню как на планшете — буквами D A C; растягиваем на свободную ширину,
+     иконка остаётся справа в той же строке */
   .nav-list {
     position: static;
+    width: auto;
+    flex: 1 1 auto;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     gap: 20px 28px;
   }
 
-  /* На мобильном меню — обычными словами (буквы D A C не нужны) */
-  .nav-link {
-    font-size: 18px;
-    line-height: 1.2;
+  /* Планшетные 92px на пункт не дают трём буквам встать в строку на 350px */
+  .nav-list li {
+    width: auto;
   }
 
-  .nav-link::before,
-  .nav-list li .nav-link::before {
-    content: none;
+  .nav-message {
+    position: static;
+    top: auto;
+    left: auto;
   }
+
+  /* На мобильном оставляем планшетные буквы D A C: font-size: 0 и ::before
+     из блока 960 наследуются, поэтому текстовые ссылки не переопределяем */
 
   .biography {
     padding: 40px 0;
+  }
+
+  /* Планшетные 688px раздувают грид-колонку до 716px — сбрасываем */
+  .biography-quote-block {
+    width: auto;
   }
 
   .biography-title {
@@ -746,6 +769,11 @@ body {
 
   .designers {
     padding: 40px 0;
+  }
+
+  /* Планшетный отступ 119px сдвигал заголовок на узком экране */
+  .section-title {
+    padding-left: 0;
   }
 
   .designer-row {
