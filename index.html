@@ -16,9 +16,9 @@
         <li><a class="nav-link" href="#">About</a></li>
         <li><a class="nav-link" href="#">Contacts</a></li>
       </ul>
-      <a class="nav-message" href="#" aria-label="Написать нам">
+      <button class="nav-message" type="button" aria-label="Написать нам" aria-haspopup="dialog" aria-controls="contact-modal">
         <img class="nav-message-icon" src="img/icon-message.svg" alt="" width="50" height="50">
-      </a>
+      </button>
     </nav>
   </header>
 
@@ -108,5 +108,54 @@
     <p class="copyright">© 2023 Mod Media. All rights reserved.</p>
   </div>
 </footer>
+
+<dialog class="modal" id="contact-modal" aria-labelledby="modal-title" aria-describedby="modal-description">
+  <form class="modal-form" id="contact-form" novalidate>
+    <div class="modal-head">
+      <h2 class="modal-title" id="modal-title">Get in touch</h2>
+      <p class="modal-description" id="modal-description">Do you have any questions? Have something to say? Don't be shy, write to us:</p>
+    </div>
+
+    <div class="modal-field">
+      <label class="modal-label" for="contact-name">Name</label>
+      <div class="modal-input-wrap">
+        <input class="modal-input" id="contact-name" name="name" type="text" placeholder="3+ Characters" autocomplete="name" minlength="3" required aria-describedby="contact-name-error">
+        <img class="modal-icon" src="img/icon-edit-name.svg" alt="" width="30" height="30">
+      </div>
+      <p class="modal-error" id="contact-name-error"></p>
+    </div>
+
+    <div class="modal-field">
+      <label class="modal-label" for="contact-email">E-mail</label>
+      <div class="modal-input-wrap">
+        <input class="modal-input" id="contact-email" name="email" type="email" placeholder="name@email.com" autocomplete="email" required aria-describedby="contact-email-error">
+        <img class="modal-icon" src="img/icon-mail.svg" alt="" width="30" height="30">
+      </div>
+      <p class="modal-error" id="contact-email-error"></p>
+    </div>
+
+    <div class="modal-field">
+      <label class="modal-label" for="contact-comment">Comment</label>
+      <div class="modal-input-wrap modal-input-wrap--textarea">
+        <textarea class="modal-input modal-input--textarea" id="contact-comment" name="comment" placeholder="Some text..." rows="3" required aria-describedby="contact-comment-error"></textarea>
+        <img class="modal-icon" src="img/icon-comment.svg" alt="" width="30" height="30">
+      </div>
+      <p class="modal-error" id="contact-comment-error"></p>
+    </div>
+
+    <div class="modal-buttons">
+      <button class="modal-button" type="button" data-modal-close>Cancel</button>
+      <button class="modal-button modal-button--primary" type="submit">Send</button>
+    </div>
+  </form>
+
+  <div class="modal-success" hidden tabindex="-1" role="status">
+    <p class="modal-success-title">Thank you!</p>
+    <p class="modal-success-text">Your message has been sent. We will get back to you soon.</p>
+    <button class="modal-button modal-button--primary" type="button" data-modal-close>Close</button>
+  </div>
+</dialog>
+
+<script src="js/script.js" defer></script>
 </body>
 </html>
