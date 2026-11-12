@@ -69,7 +69,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  padding: 16px 0;
 }
 
 .logo {
@@ -111,25 +111,50 @@ body {
   text-underline-offset: 4px;
 }
 
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-message {
+  display: flex;
+  line-height: 0;
+  transition: opacity 0.2s ease;
+}
+
+.nav-message:hover {
+  opacity: 0.55;
+}
+
+.nav-message:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.nav-message-icon {
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+
 
 /* ---------- Biography ---------- */
 .biography {
   position: relative;
   display: grid;
-  grid-template-columns: 571px 455px;
-  column-gap: 139px;
+  grid-template-columns: 49% 39%;
+  justify-content: space-between;
   align-items: start;
   max-width: 1165px;
   margin: 0 auto;
-  padding: 60px 0;
+  padding: 59px 0;
 }
 
-/* Вертикальная надпись «Biography» — в зазоре между фото и текстом,
-   у верхнего края фото Кати Миллс (как в макете) */
 .biography-label {
   position: absolute;
-  left: 600px;
-  top: 200px;
+  left: 628px;
+  top: 137px;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   font-size: 24px;
@@ -142,16 +167,20 @@ body {
 
 .biography-photo {
   display: block;
-  width: 571px;
-  height: 840px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 571 / 840;
   object-fit: cover;
 }
 
 .biography-content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: flex-start;
-  padding-top: 18px;
+  gap: 36px;
+  min-height: 100%;
+  padding: 18px 0;
 }
 
 .biography-title {
@@ -168,14 +197,30 @@ body {
   font-size: 18px;
   line-height: 21px;
   color: #0D0D0D;
-  margin-top: 8px;
+}
+
+/* Роль — последовательность блоков; слеши между ними собираем через ::before
+   (десктоп не зависит от переносов в разметке) */
+.biography-role .role-line + .role-line::before {
+  content: " / ";
+}
+
+.biography-role .role-line--lead::before {
+  content: "";
+}
+
+.biography-quote-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
 }
 
 .biography-divider {
   width: 20px;
   height: 6px;
   background-color: #0D0D0D;
-  margin: 36px 0 18px;
+  margin: 0;
 }
 
 .quote {
@@ -187,10 +232,16 @@ body {
   max-width: 455px;
 }
 
+/* Переносы цитаты: в HTML лежат и десктопные (br-1440), и планшетные (br-768)
+   переносы; на десктопе показываем только свои, пряча планшетные. */
+.quote .br-768 {
+  display: none;
+}
+
 
 /* ---------- Designers ---------- */
 .designers {
-  padding: 60px 0;
+  padding: 0;
 }
 
 .section-title {
@@ -200,7 +251,8 @@ body {
   line-height: 28px;
   color: #000000;
   max-width: 1165px;
-  margin: 0 auto 74px;
+  margin: 0 auto 46px;
+  padding-left: 119px;
 }
 
 .designer-grid {
@@ -208,9 +260,6 @@ body {
   margin: 0 auto;
 }
 
-/* Две строки «зигзагом» как в макете:
-   ряд 1 — широкая слева, узкая справа;
-   ряд 2 — узкая слева, широкая справа */
 .designer-row {
   display: flex;
   justify-content: space-between;
@@ -224,14 +273,15 @@ body {
 .designer-card {
   display: flex;
   flex-direction: column;
+  padding-bottom: 13px;
 }
 
 .designer-card--wide {
-  width: 740px;
+  width: 63.5%;
 }
 
 .designer-card--narrow {
-  width: 370px;
+  width: 31.8%;
 }
 
 .designer-photo {
@@ -249,7 +299,6 @@ body {
   line-height: 19px;
   text-transform: uppercase;
   color: #000000;
-  margin-bottom: 4px;
 }
 
 .designer-text {
@@ -265,23 +314,26 @@ body {
 .footer {
   background-color: #0D0D0D;
   color: #FFFFFF;
-  margin-top: 60px;
+  max-width: 1440px;
+  margin: 78px auto 0;
 }
 
-/* Футер — полноширинная тёмная плашка: контент прижат к краям вьюпорта,
-   как в макете (контакты у левого края) */
 .footer-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 20px;
-  padding: 70px 20px;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 70px 20px 68px;
 }
 
 .contacts {
   display: flex;
   flex-direction: column;
   font-style: normal;
+  margin-right: 436px;
 }
 
 .contacts .footer-link {
@@ -307,8 +359,14 @@ body {
 .socials {
   display: flex;
   flex-wrap: wrap;
-  gap: 55px;
+  gap: 25px;
   list-style: none;
+}
+
+.social-icon {
+  display: block;
+  width: 30px;
+  height: 30px;
 }
 
 .copyright {
@@ -317,6 +375,7 @@ body {
   color: #FFFFFF;
   text-align: right;
   max-width: 340px;
+  margin-left: auto;
 }
 
 
@@ -348,38 +407,292 @@ body {
   }
 }
 
-/* ---------- Планшет ---------- */
+/* ---------- Планшет (макет 768: своя компоновка) ---------- */
 @media (max-width: 960px) {
-  .biography {
-    grid-template-columns: 1fr;
-    row-gap: 30px;
+  /* У планшетного макета свои отступы от края (14/16), сбрасываем общий 20px */
+  .wrp {
+    padding-left: 0;
+    padding-right: 0;
   }
 
-  .biography-label {
+  /* Header по планшетному макету: без логотипа, меню слева, иконка справа */
+  .header {
+    height: 82px;
+    padding: 0 16px;
+  }
+
+  .logo {
     display: none;
   }
 
-  .biography-photo {
+  .nav {
+    position: relative;
     width: 100%;
-    height: auto;
+  }
+
+  /* Буквы-заглушки D A C на позициях макета (блоки 92px на x=16/232/448).
+     `position: absolute` лежит внутри .nav, уже сдвинутого на 16px паддингом хедера. */
+  .nav-list {
+    position: absolute;
+    left: 0;
+    width: 524px;
+    justify-content: space-between;
+  }
+
+  /* Привязка к правому краю вместо left: 666.5px — на 768 позиция та же,
+     но на 701–732 иконка больше не вылезает за экран */
+  .nav-message {
+    position: absolute;
+    top: -25px;
+    right: 19.5px;
+    left: auto;
+  }
+
+  .nav-list li {
+    width: 92px;
+    text-align: center;
+  }
+
+  .nav-link {
+    font-size: 0;
+    line-height: 1;
+  }
+
+  .nav-link::before {
+    content: "D";
+    display: inline-block;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 48px;
+    color: #000000;
+  }
+
+  .nav-list li:nth-child(2) .nav-link::before {
+    content: "A";
+  }
+
+  .nav-list li:nth-child(3) .nav-link::before {
+    content: "C";
+  }
+
+  /* Biography: другой порядок — роль, цитата, имя, фото внизу */
+  .biography {
+    grid-template-columns: 1fr;
+    row-gap: 35px;
+    padding: 0;
+    margin-top: 80px;
+  }
+
+  /* В планшетном макете label «Biography» — горизонтальный, справа сверху (правый край 752) */
+  .biography-label {
+    left: auto;
+    right: 16px;
+    top: 0;
+    font-size: 18px;
+    line-height: 21px;
+    white-space: nowrap;
+    transform: none;
+  }
+
+  .biography-photo {
+    order: 2;
+    width: 100%;
+    height: 400px;
+    aspect-ratio: auto;
+    object-fit: cover;
+    justify-self: stretch;
+  }
+
+  .biography-content {
+    order: 1;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 0 14px;
+  }
+
+  .biography-role {
+    order: 1;
+    max-width: 526px;
+  }
+
+  /* В макете планшета роль идёт одной строкой на каждый пункт (слеши не нужны) */
+  .biography-role br {
+    display: none;
+  }
+
+  .biography-role .role-line {
+    display: block;
+  }
+
+  /* В макете планшета строки роли идут с тире-маркерами: «- Scenography» и т.д.
+     Scenography (role-line--lead) отделён от Art Director тегом <br>, поэтому
+     дефис ему задаём отдельным правилом. */
+  .biography-role .role-line + .role-line::before,
+  .biography-role .role-line--lead::before {
+    content: "- ";
+  }
+
+  .biography-quote-block {
+    order: 2;
+    width: 100%;
+    max-width: 688px;
+    margin-top: 59px;
+    gap: 0;
+  }
+
+  /* Чёрточки в планшетной биографии нет */
+  .biography-divider {
+    display: none;
   }
 
   .biography-title {
+    order: 3;
     font-size: 64px;
-    line-height: 1.15;
+    line-height: 1.33;
+    margin-top: 120px;
+  }
+
+  /* В планшетном макете имя идёт с маркером-дефисом: «-Katya Mills» */
+  .biography-title::before {
+    content: "-";
+  }
+
+  /* На планшете имя в одну строку (десктопному <br> тут не место) */
+  .biography-title br {
+    display: none;
   }
 
   .quote {
-    font-size: 22px;
-    line-height: 1.25;
+    font-family: 'Bitter', serif;
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 36.75px;
+    width: 100%;
+    max-width: 688px;
   }
 
-  .designer-row {
-    gap: 20px;
+  /* На планшете — свои переносы цитаты: прячем десктопные, показываем планшетные */
+  .quote .br-1440 {
+    display: none;
+  }
+
+  .quote .br-768 {
+    display: initial;
+  }
+
+  /* В макете цитата разбита на 4 строки (Bitter 300/30/36) —
+     переносы заданы жёстко, поэтому на планшете их сохраняем */
+
+  /* Designers: вертикальные карточки 736×313 (фото 258 слева/справа) */
+  .designers {
+    margin-top: 80px;
   }
 
   .section-title {
-    margin-bottom: 40px;
+    margin-bottom: 31px;
+    padding-left: 119px;
+  }
+
+  .designer-grid {
+    width: 736px;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .designer-row {
+    flex-direction: column;
+    gap: 74px;
+  }
+
+  /* В макете все 4 карточки — одна колонка с gap 74 (между рядами тоже) */
+  .designer-row + .designer-row {
+    margin-top: 74px;
+  }
+
+  .designer-card {
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+    padding-bottom: 0;
+  }
+
+  /* Чётные карточки: текст слева (как в макете), фото справа */
+  .designer-row .designer-card:nth-child(even) {
+    justify-content: space-between;
+  }
+
+  .designer-row .designer-card:nth-child(even) .designer-photo {
+    order: 2;
+  }
+
+  .designer-row .designer-card:nth-child(even) .designer-info {
+    order: 1;
+  }
+
+  .designer-photo {
+    width: 258px;
+    height: 313px;
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+
+  .designer-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 40px 30px;
+  }
+
+  /* В планшетном макете подпись карточки: имя крупно 700/24/28 uppercase,
+     строки From/… и Skills/… — мельче (400/16/18.75). Бокс 360×65. */
+  .designer-name {
+    margin: 0;
+    max-width: 360px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .designer-info .designer-text {
+    margin: 0;
+    max-width: 360px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18.75px;
+  }
+
+  /* Footer: фиксированная раскладка по планшетному макету (coздav по координатам) */
+  .footer {
+    margin-top: 80px;
+  }
+
+  .footer-inner {
+    position: relative;
+    height: 174px;
+  }
+
+  .contacts {
+    position: absolute;
+    left: 16px;
+    top: 51px;
+    margin-right: 0;
+  }
+
+  .socials {
+    position: absolute;
+    right: 16px;
+    top: 77px;
+  }
+
+  .copyright {
+    position: absolute;
+    left: 16px;
+    top: 104px;
+    text-align: left;
+    line-height: 19px;
   }
 }
 
@@ -392,8 +705,18 @@ body {
   }
 
   .header {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+    padding: 24px 0 16px;
+  }
+
+  /* Снимаем планшетное абсолютное позиционирование: иконка снова в потоке */
+  .nav {
     flex-wrap: wrap;
-    row-gap: 4px;
+    justify-content: center;
+    row-gap: 12px;
   }
 
   .logo {
@@ -401,35 +724,65 @@ body {
     line-height: 1.1;
   }
 
+  /* Меню как на планшете — буквами D A C; растягиваем на свободную ширину,
+     иконка остаётся справа в той же строке */
   .nav-list {
+    position: static;
+    width: auto;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
     gap: 20px 28px;
   }
 
-  .nav-link {
-    font-size: 18px;
-    line-height: 1.2;
+  /* Планшетные 92px на пункт не дают трём буквам встать в строку на 350px */
+  .nav-list li {
+    width: auto;
   }
+
+  .nav-message {
+    position: static;
+    top: auto;
+    left: auto;
+  }
+
+  /* На мобильном оставляем планшетные буквы D A C: font-size: 0 и ::before
+     из блока 960 наследуются, поэтому текстовые ссылки не переопределяем */
 
   .biography {
     padding: 40px 0;
+  }
+
+  /* Планшетные 688px раздувают грид-колонку до 716px — сбрасываем */
+  .biography-quote-block {
+    width: auto;
   }
 
   .biography-title {
     font-size: 52px;
   }
 
+  /* На мобильном макета с дефисом нет — сбрасываем маркер */
+  .biography-title::before {
+    content: "";
+  }
+
   .designers {
     padding: 40px 0;
   }
 
-  /* Дизайнеры — в одну колонку */
+  /* Планшетный отступ 119px сдвигал заголовок на узком экране */
+  .section-title {
+    padding-left: 0;
+  }
+
   .designer-row {
     flex-direction: column;
     gap: 40px;
   }
 
   .designer-row + .designer-row {
-    margin-top: 0;
+    margin-top: 40px;
   }
 
   .designer-card,
@@ -439,19 +792,51 @@ body {
     width: 100%;
   }
 
+  .designer-card {
+    flex-direction: column;
+  }
+
   .designer-photo {
+    width: 100%;
+    aspect-ratio: 4 / 5;
     height: auto;
-    aspect-ratio: 740 / 475;
     margin-bottom: 20px;
   }
 
+  .designer-info {
+    padding: 0;
+  }
+
   .footer-inner {
+    position: static;
+    height: auto;
     flex-direction: column;
     align-items: flex-start;
     gap: 28px;
   }
 
+  .contacts,
+  .socials,
+  .copyright {
+    position: static;
+    margin: 0;
+  }
+
   .copyright {
     text-align: left;
+  }
+}
+
+@media (max-width: 420px) {
+  .logo {
+    font-size: 44px;
+  }
+
+  .biography-title {
+    font-size: 40px;
+  }
+
+  .nav-list {
+    gap: 14px 24px;
   }
 }
