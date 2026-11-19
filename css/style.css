@@ -10,6 +10,14 @@
   box-sizing: border-box;
 }
 
+/* Скрытый спрайт иконок: не занимает место, но <use> продолжает работать */
+.svg-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
 
 @font-face {
   font-family: 'Playfair Display';
@@ -94,16 +102,21 @@ body {
   line-height: 28px;
   color: #000000;
   text-decoration: none;
-  transition: opacity 0.2s ease, color 0.2s ease;
+  transition: color 0.2s ease;
 }
 
+/* Стайлгайд: hover — подчёркивание,
+   фокус — акцентный цвет и рамка 1.5px #E0B59F */
 .nav-link:not(.nav-link--active):hover {
-  opacity: 0.55;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .nav-link:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 4px;
+  color: #A07C72;
+  outline: 1.5px solid #E0B59F;
+  outline-offset: 6px;
+  border-radius: 10px;
 }
 
 .nav-link--active {
@@ -119,17 +132,30 @@ body {
 
 .nav-message {
   display: flex;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #000000;
+  font: inherit;
   line-height: 0;
-  transition: opacity 0.2s ease;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
 
+/* Стайлгайд: hover #A07C72, active #E0B59F, фокус — акцент и рамка #E0B59F */
 .nav-message:hover {
-  opacity: 0.55;
+  color: #A07C72;
+}
+
+.nav-message:active {
+  color: #E0B59F;
 }
 
 .nav-message:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 4px;
+  color: #A07C72;
+  outline: 1.5px solid #E0B59F;
+  outline-offset: 0;
+  border-radius: 10px;
 }
 
 .nav-message-icon {
@@ -344,16 +370,20 @@ body {
 .footer-link {
   color: #FFFFFF;
   text-underline-offset: 4px;
-  transition: opacity 0.2s ease;
+  transition: color 0.2s ease;
 }
 
+/* Стайлгайд: hover ссылки — подчёркивание (в футере оно уже есть),
+   фокус — акцентный цвет и рамка 1.5px #E0B59F */
 .footer-link:hover {
-  opacity: 0.55;
+  text-decoration: underline;
 }
 
 .footer-link:focus-visible {
-  outline: 2px solid currentColor;
+  color: #A07C72;
+  outline: 1.5px solid #E0B59F;
   outline-offset: 4px;
+  border-radius: 2px;
 }
 
 .socials {
@@ -361,6 +391,26 @@ body {
   flex-wrap: wrap;
   gap: 25px;
   list-style: none;
+}
+
+/* Иконки из стайлгайда: hover #A07C72, active #E0B59F,
+   фокус — акцент и рамка вокруг иконки (30px + 10px отступа) */
+.socials .footer-link {
+  display: inline-flex;
+  border-radius: 10px;
+}
+
+.socials .footer-link:hover {
+  color: #A07C72;
+}
+
+.socials .footer-link:active {
+  color: #E0B59F;
+}
+
+.socials .footer-link:focus-visible {
+  color: #A07C72;
+  outline-offset: 10px;
 }
 
 .social-icon {
@@ -449,6 +499,7 @@ body {
   }
 
   .nav-list li {
+    position: relative;
     width: 92px;
     text-align: center;
   }
@@ -474,6 +525,42 @@ body {
 
   .nav-list li:nth-child(3) .nav-link::before {
     content: "C";
+  }
+
+  /* Стайлгайд Menu: hover буквы #A07C72, active #E0B59F,
+     фокус — акцентная буква и рамка 1.5px #E0B59F (блок 92×82) */
+  .nav-link:not(.nav-link--active):hover {
+    text-decoration: none;
+  }
+
+  .nav-link:hover::before {
+    color: #A07C72;
+  }
+
+  .nav-link:active::before {
+    color: #E0B59F;
+  }
+
+  .nav-link:focus-visible {
+    color: inherit;
+    outline: none;
+  }
+
+  .nav-link:focus-visible::before {
+    color: #A07C72;
+  }
+
+  .nav-link:focus-visible::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 92px;
+    height: 82px;
+    border: 1.5px solid #E0B59F;
+    border-radius: 10px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
   }
 
   /* Biography: другой порядок — роль, цитата, имя, фото внизу */
@@ -838,5 +925,299 @@ body {
 
   .nav-list {
     gap: 14px 24px;
+  }
+}
+
+
+/* ============================================================
+   Модальная форма «Get in touch»
+   ============================================================ */
+
+.modal {
+  width: 476px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 32px);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  box-shadow: 0 11.6px 124.3px rgba(37, 72, 153, 0.17);
+  color: #0D0D0D;
+  overflow-y: auto;
+}
+
+.modal:focus-visible {
+  outline: none;
+}
+
+/* Затемнение страницы за модалкой */
+.modal::backdrop {
+  background-color: rgba(13, 13, 13, 0.5);
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 20px;
+}
+
+.modal-form[hidden] {
+  display: none;
+}
+
+.modal-head {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 6px;
+}
+
+.modal-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 26px;
+  color: #000000;
+}
+
+.modal-description {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #0D0D0D;
+}
+
+.modal-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-label {
+  margin-bottom: 6px;
+  padding: 0 6px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #000000;
+}
+
+/* В макете поле вложено в рамку с отступом 6px, поэтому внешний отступ
+   даёт те же 54px по высоте (6 + 42 + 6) */
+.modal-input-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 6px;
+  min-height: 42px;
+  padding: 6px 10px;
+  border: 1px solid #B3B3B3;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Стайлгайд: hover — фон #EDEDED, фокус — рамка #E0B59F и акцентная иконка */
+.modal-input-wrap:hover {
+  background-color: #EDEDED;
+}
+
+.modal-input-wrap:focus-within {
+  border-color: #E0B59F;
+  background-color: #FFFFFF;
+}
+
+.modal-input-wrap.is-invalid {
+  border-color: #D93636;
+}
+
+.modal-input-wrap--textarea {
+  align-items: flex-start;
+  min-height: 95px;
+}
+
+.modal-input {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #0D0D0D;
+  background-color: transparent;
+}
+
+.modal-input:focus {
+  outline: none;
+}
+
+.modal-input::placeholder {
+  color: #868686;
+  opacity: 1;
+}
+
+.modal-input--textarea {
+  align-self: stretch;
+  resize: none;
+}
+
+.modal-icon {
+  display: block;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  color: #868686;
+  pointer-events: none;
+  transition: color 0.2s ease;
+}
+
+.modal-input-wrap:focus-within .modal-icon {
+  color: #A07C72;
+}
+
+.modal-error {
+  padding: 0 12px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #D93636;
+}
+
+.modal-error:empty {
+  display: none;
+}
+
+.modal-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 2px;
+}
+
+.modal-button {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 10px 20px;
+  border: 1.32px solid #B3B3B3;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 32px;
+  color: #000000;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.modal-button--primary {
+  min-height: 52px;
+  border-color: #000000;
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+/* Состояния кнопок из стайлгайда */
+.modal-button:hover:not(:disabled) {
+  border-color: #E0B59F;
+  background-color: #D7C8C1;
+}
+
+.modal-button:active:not(:disabled) {
+  border-color: #D7C8C1;
+  background-color: #E0B59F;
+}
+
+.modal-button--primary:hover:not(:disabled) {
+  border-color: #A07C72;
+  background-color: #A07C72;
+}
+
+.modal-button--primary:active:not(:disabled) {
+  border-color: #E0B59F;
+  background-color: #E0B59F;
+}
+
+.modal-button:disabled {
+  border-color: #CCCCCC;
+  background-color: #FFFFFF;
+  color: #CCCCCC;
+  cursor: not-allowed;
+}
+
+.modal-button--primary:disabled {
+  border-color: #CCCCCC;
+  background-color: #CCCCCC;
+  color: #FFFFFF;
+}
+
+.modal-button:focus-visible {
+  outline: 1.5px solid #E0B59F;
+  outline-offset: 3px;
+}
+
+/* Экран успешной отправки */
+.modal-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 48px 26px;
+  text-align: center;
+}
+
+.modal-success[hidden] {
+  display: none;
+}
+
+.modal-success-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 26px;
+  color: #000000;
+}
+
+.modal-success-text {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #0D0D0D;
+}
+
+.modal-success .modal-button {
+  flex: 0 0 auto;
+  min-width: 160px;
+}
+
+@media (max-width: 520px) {
+  .modal-form {
+    gap: 20px;
+    padding: 16px;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .modal-button {
+    width: 100%;
+  }
+
+  .modal-success {
+    padding: 40px 20px;
   }
 }
